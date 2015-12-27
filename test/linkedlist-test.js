@@ -355,7 +355,6 @@ describe('LinkedList', function() {
             list.add(1).add(2).add(3).add(4);
 
             expect(list.toArray()).to.eql([1, 2, 3, 4]);
-
         });
     });
 });
