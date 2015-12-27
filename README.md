@@ -3,13 +3,14 @@
 js-linkedlist is an implementation of the doubly-linked list in JavaScript. It provides a versatile and intuitive interface for manipulating items in a list. Internally the list is represented as a circular list of nodes along with a reference to the head of the list. The circular arrangement of the list forces all nodes to have non-null pointers, significantly simplifying the implementation. The diagram below shows a conceptual view of the implementation. Note that an empty list is represented by the head pointing to null.
 
 ## Usage
-Create a new list:
+
+### Creating a new list
 
 ```javascript
 var list = new LinkedList();
 ```
 
-Add some nodes:
+### Adding nodes
 
 ```javascript
 list.add(1);
@@ -22,6 +23,7 @@ You can also chain the add method:
 list.add(1).add(2);
 ```
 
+### Iterating through the list
 Iterate through the list using the `each()` method. It takes an iteratee function that is called for each node.
 
 ```javascript
@@ -35,6 +37,7 @@ var iteratee = function(node) {
 list.each(iteratee);
 ```
 
+### Finding a node
 Find a node using the `find()` method. It takes a predicate function which is called for each node. The `find` method returns the first node that returns `true` from the predicate function, or `undefined` if no node returns `true`.
 
 ```javascript
@@ -48,6 +51,7 @@ var predicate = function(node) {
 list.find(predicate);
 ```
 
+### Modifiying a list during iteration
 You can modify the list while iteration, but you must stop iteration once the list is modified (return `false` from the iteratee function). The state of the iterator is undefined once the list is modified.
 
 ```javascript
@@ -70,6 +74,7 @@ var iteratee = function(node, list) {
 list.each(iteratee);
 ```
 
+### Converting a list to an array
 The `toArray()` method converts the linked list to an array:
 
 ```javascript
