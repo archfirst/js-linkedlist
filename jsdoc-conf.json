@@ -1,0 +1,12 @@
+{
+    "opts": {
+        "destination": "apidocs",
+        "recurse": true
+    },
+
+    "templates": {
+        "default": {
+            "outputSourceFiles": false
+        }
+    }
+}

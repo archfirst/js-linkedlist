@@ -1,12 +1,23 @@
 // -----------------------------------------------------------------------------
 // ListNode
 // -----------------------------------------------------------------------------
+
+/**
+ * Creates a new ListNode.
+ *
+ * @param {*} data
+ * @constructor
+ */
 function ListNode(data) {
     this.data = data;
     // this.next = null;
     // this.prev = null;
 }
 
+/**
+ * Returns a string representation of a ListNode.
+ * @returns {string}
+ */
 ListNode.prototype.toString = function() {
     return 'prev: ' + JSON.stringify(this.prev.data) +
             ', this: ' + JSON.stringify(this.data) +
@@ -16,6 +27,11 @@ ListNode.prototype.toString = function() {
 // -----------------------------------------------------------------------------
 // LinkedList
 // -----------------------------------------------------------------------------
+
+/**
+ * Creates a new instance of LinkedList.
+ * @constructor
+ */
 function LinkedList() {
     this.head = null;
 }

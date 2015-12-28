@@ -45,10 +45,9 @@ gulp.task('lint', ['lint-src', 'lint-test']);
 gulp.task('apidocs', function() {
     var args = [
         './node_modules/jsdoc/jsdoc.js',
-        '-r',
         'src',
-        '-d',
-        'apidocs'
+        '-c',
+        './jsdoc-conf.json'
     ];
 
     var jsdoc = child_process.spawn('node', args);
