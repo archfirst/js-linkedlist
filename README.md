@@ -2,6 +2,18 @@
 
 js-linkedlist is an implementation of the doubly-linked list in JavaScript. It provides a versatile and intuitive interface for manipulating items in a list. Internally the list is represented as a circular list of nodes along with a reference to the head of the list. The circular arrangement of the list forces all nodes to have non-null pointers, significantly simplifying the implementation. The diagram below shows a conceptual view of the implementation. Note that an empty list is represented by the head pointing to null.
 
+![LinkedList](assets/linked-list.png)
+
+Each node in the list consists of its data along with references to the next and previous nodes. For example:
+
+```javascript
+{
+    data: {symbol: 'AAPL', price: 108},
+    next: reference-to-next-node,
+    prev: reference-to-previous-node
+}
+```
+
 ## Quick Start
 
 ### Creating a new list
