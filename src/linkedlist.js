@@ -8,10 +8,9 @@ function ListNode(data) {
 }
 
 ListNode.prototype.toString = function() {
-    return '{prev: ' + this.prev.data +
-            ', this: ' + this.data +
-            ', next: ' + this.next.data +
-            '}';
+    return 'prev: ' + JSON.stringify(this.prev.data) +
+            ', this: ' + JSON.stringify(this.data) +
+            ', next: ' + JSON.stringify(this.next.data);
 };
 
 // -----------------------------------------------------------------------------
