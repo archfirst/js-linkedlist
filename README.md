@@ -23,8 +23,8 @@ You can also chain the add method:
 list.add(1).add(2);
 ```
 
-### Iterating through the list
-Use the `each()` method to iterate through the list. `each()` takes an iteratee function that is called for each node.
+### Iterating through a list
+Use the `each()` method to iterate through a list. `each()` takes an iteratee function that is called for each node.
 
 ```javascript
 var list = new LinkedList();
@@ -52,7 +52,7 @@ list.find(predicate);
 ```
 
 ### Modifiying a list during iteration
-You can modify the list during iteration, but you must stop the iteration once you have modified the list (return `false` from the iteratee function). The state of the iterator is undefined once the list is modified.
+You can modify a list during iteration, but you must stop the iteration once you have modified the list (return `false` from the iteratee function). The state of the iterator is undefined once the list is modified.
 
 ```javascript
 var list = new LinkedList();
@@ -88,4 +88,4 @@ list.toArray();
 
 ## API
 
-The full API is listed here.
+The full API is listed [here](https://github.com/archfirst/js-linkedlist/blob/master/src/linkedlist.js).
