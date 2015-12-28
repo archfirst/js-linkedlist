@@ -14,6 +14,12 @@ Each node in the list consists of its data along with references to the next and
 }
 ```
 
+## Installation
+
+```bash
+$ bower install js-linkedlist
+```
+
 ## Quick Start
 
 ### Creating a new list
