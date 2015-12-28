@@ -1,23 +1,8 @@
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
-const del = require('del');
-const path = require('path');
-const mkdirp = require('mkdirp');
-const isparta = require('isparta');
 const child_process = require('child_process');
 
-const manifest = require('./package.json');
-const config = manifest.gulpConfig;
-const mainFile = manifest.main;
-const destinationFolder = path.dirname(mainFile);
-
-// Remove the built files
-gulp.task('clean', function(cb) {
-    del([destinationFolder], cb);
-});
-
-// Send a notification when JSHint fails,
-// so that you know your changes didn't build
+// Sends a notification when JSHint fails
 function jshintNotify(file) {
     if (!file.jshint) {
         return;
@@ -25,6 +10,7 @@ function jshintNotify(file) {
     return file.jshint.success ? false : 'JSHint failed';
 }
 
+// Sends a notification when JSCS fails
 function jscsNotify(file) {
     if (!file.jscs) {
         return;
@@ -47,39 +33,15 @@ function createLintTask(taskName, files) {
 }
 
 // Lint our source code
-createLintTask('lint-src', ['src/**/*.js'])
+createLintTask('lint-src', ['src/**/*.js']);
 
 // Lint our test code
-createLintTask('lint-test', ['test/**/*.js'])
+createLintTask('lint-test', ['test/**/*.js']);
 
-// Build the library in the destination folder
-gulp.task('build', ['lint-src', 'clean'], function() {
+// Lint all the code
+gulp.task('lint', ['lint-src', 'lint-test']);
 
-    // Create our output directory
-    mkdirp.sync(destinationFolder);
-    return gulp.src('src/**/*.js')
-        .pipe($.plumber())
-        .pipe(gulp.dest(destinationFolder));
-});
-
-function test() {
-    return gulp.src(['test/setup/node.js', 'test/unit/**/*.js'], {read: false})
-        .pipe($.plumber())
-        .pipe($.mocha({reporter: 'spec', globals: config.mochaGlobals}));
-}
-
-gulp.task('coverage', function(done) {
-    gulp.src(['src/*.js'])
-        .pipe($.plumber())
-        .pipe($.istanbul({instrumenter: isparta.Instrumenter}))
-        .pipe($.istanbul.hookRequire())
-        .on('finish', function() {
-            return test()
-                .pipe($.istanbul.writeReports())
-                .on('end', done);
-        });
-});
-
+// Build API docs
 gulp.task('apidocs', function() {
     var args = [
         './node_modules/jsdoc/jsdoc.js',
@@ -100,13 +62,5 @@ gulp.task('apidocs', function() {
     });
 });
 
-// Lint and run our tests
-gulp.task('test', ['lint-src', 'lint-test'], test);
-
-// Run the headless unit tests as you make changes.
-gulp.task('watch', ['test'], function() {
-    gulp.watch(['src/**/*', 'test/**/*', 'package.json', '**/.jshintrc', '.jscsrc'], ['test']);
-});
-
-// An alias of test
-gulp.task('default', ['test']);
+// An alias of lint
+gulp.task('default', ['lint']);
